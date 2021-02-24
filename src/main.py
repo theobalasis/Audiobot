@@ -1,11 +1,11 @@
 from discord.ext.commands import Bot, Context, when_mentioned
 from discord.player import FFmpegPCMAudio
 from os import getenv, listdir, environ
-from sys import stdout, stderr, exit
+from sys import stdout, exit
+from utils import eprint
 import asyncio
 import logging
 import random
-from utils import eprint
 
 logging.basicConfig(
     format="[%(asctime)s] [%(levelname)s] %(message)s",
@@ -19,7 +19,7 @@ audio_queue = asyncio.Queue()
 play_next = asyncio.Event()
 
 
-async def play_audio_queue():
+async def play_audio_queue() -> None:
     """Async loop for playing the audio queue
     """
     while True:
