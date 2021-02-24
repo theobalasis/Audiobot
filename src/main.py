@@ -1,5 +1,5 @@
 from discord.ext.commands import Bot, Context, when_mentioned
-from discord.player import FFmpegPCMAudio
+from discord.player import FFmpegOpusAudio
 from os import getenv, listdir, environ
 from sys import stdout, exit
 from utils import eprint
@@ -88,7 +88,7 @@ async def play(context: Context, number: int) -> None:
              f"[{context.guild}/{context.channel}]")
         )
         for filename in files:
-            audio = FFmpegPCMAudio(f"audio/{filename}")
+            audio = FFmpegOpusAudio(f"audio/{filename}")
             await audio_queue.put((context.voice_client, audio, filename))
 
 
@@ -118,7 +118,7 @@ async def shuffle(context: Context, number: int) -> None:
              f"[{context.guild}/{context.channel}]")
         )
         for filename in files:
-            audio = FFmpegPCMAudio(f"audio/{filename}")
+            audio = FFmpegOpusAudio(f"audio/{filename}")
             await audio_queue.put((context.voice_client, audio, filename))
 
 
