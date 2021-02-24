@@ -12,6 +12,10 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+if "AUDIOBOT_TOKEN" in environ:
+    eprint("AUDIOBOT_TOKEN environment variable not defined!")
+    exit(1)
+
 bot = Bot(command_prefix=when_mentioned)
 audio_queue = asyncio.Queue()
 play_next = asyncio.Event()
